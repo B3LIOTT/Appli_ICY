@@ -31,12 +31,19 @@ class _SearchSectionSatement extends State<SearchSection>{
               decoration: InputDecoration(
                   fillColor: const Color(0xFFEFEDEF),
                   filled: true,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: const BorderSide(
-                          width: 0,
-                          style: BorderStyle.none
-                      )
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: const BorderSide(
+                      color: Colors.black,
+                      width: 2.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: const BorderSide(
+                      color: Colors.black,
+                      width: 1.0,
+                    ),
                   ),
                   hintText: 'CHERCHER UN MOT CLE',
                   hintStyle: TextStyle(
@@ -49,15 +56,16 @@ class _SearchSectionSatement extends State<SearchSection>{
 
           ElevatedButton(
             onPressed: searchAction,
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Color(0xFFEFEDEF)),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)
-                  )
+            style: ElevatedButton.styleFrom(
+              side: const BorderSide(
+                width: 1,
               ),
-              minimumSize: MaterialStateProperty.all(Size(50,50)),
-              maximumSize: MaterialStateProperty.all(Size(50,50)),
+              backgroundColor: const Color(0xFF00516A),
+              shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                  ),
+              minimumSize: const Size(50,50),
+              maximumSize: const Size(50,50),
             ),
             child: const ImageIcon(
                 AssetImage('assets/images/search-interface-symbol.png')
@@ -70,6 +78,7 @@ class _SearchSectionSatement extends State<SearchSection>{
 
   void searchAction() {
     textFieldController.clear();
+
   }
 
 }
