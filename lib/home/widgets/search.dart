@@ -4,11 +4,11 @@ class SearchSection extends StatefulWidget {
   const SearchSection({super.key});
 
   @override
-  _SearchSectionSatement createState() => _SearchSectionSatement();
+  _SearchSectionStatement createState() => _SearchSectionStatement();
 
 }
 
-class _SearchSectionSatement extends State<SearchSection>{
+class _SearchSectionStatement extends State<SearchSection>{
   final TextEditingController textFieldController = TextEditingController();
 
   @override
@@ -17,10 +17,11 @@ class _SearchSectionSatement extends State<SearchSection>{
       height: 100,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             height:50,
-            width: 250,//à changer: il faut faire une taille relative à celle de l'écran
+            width: MediaQuery.of(context).size.width * 0.7,//à changer: il faut faire une taille relative à celle de l'écran
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
             child: TextField(
               style: const TextStyle(
