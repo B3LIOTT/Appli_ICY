@@ -80,6 +80,7 @@ class _SearchSectionStatement extends State<SearchSection>{
   void searchAction() {
     textFieldController.clear();
 
+    //Recherche des éléments en rapport avec le mot clé
   }
 
 }
