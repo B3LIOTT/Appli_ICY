@@ -20,7 +20,7 @@ class _SearchSectionStatement extends State<SearchSection>{
         mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(
-            height: 40,
+            height: 50,
             width: MediaQuery.of(context).size.width * 0.7,
             child: TextField(
               style: const TextStyle(
