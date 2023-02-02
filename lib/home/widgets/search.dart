@@ -10,6 +10,7 @@ class SearchSection extends StatefulWidget {
 
 class _SearchSectionStatement extends State<SearchSection>{
   final TextEditingController textFieldController = TextEditingController();
+  String textFieldText = "";
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class _SearchSectionStatement extends State<SearchSection>{
             width: MediaQuery.of(context).size.width * 0.7,
             child: TextField(
               style: const TextStyle(
-                fontSize: 15,
+                fontSize: 18,
                 //fontFamily:
               ),
               controller: textFieldController,
@@ -60,6 +61,7 @@ class _SearchSectionStatement extends State<SearchSection>{
             style: ElevatedButton.styleFrom(
               side: const BorderSide(
                 width: 1,
+                color: Colors.black,
               ),
               backgroundColor: const Color(0xFF00516A),
               shape: RoundedRectangleBorder(
@@ -79,7 +81,7 @@ class _SearchSectionStatement extends State<SearchSection>{
 
   void searchAction() {
     textFieldController.clear();
-
+    textFieldText = textFieldController.text;
     //Recherche des éléments en rapport avec le mot clé
   }
 
