@@ -13,34 +13,34 @@ class _SearchSectionStatement extends State<SearchSection>{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Container(
-            height:50,
-            width: MediaQuery.of(context).size.width * 0.7,//à changer: il faut faire une taille relative à celle de l'écran
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+          SizedBox(
+            height: 50,
+            width: MediaQuery.of(context).size.width * 0.7,
             child: TextField(
               style: const TextStyle(
-                fontSize: 18,
+                fontSize: 15,
                 //fontFamily:
               ),
               controller: textFieldController,
               decoration: InputDecoration(
+                  isDense: true,
                   fillColor: const Color(0xFFEFEDEF),
                   filled: true,
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25.0),
+                    borderRadius: BorderRadius.circular(15.0),
                     borderSide: const BorderSide(
                       color: Colors.black,
                       width: 2.0,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25.0),
+                    borderRadius: BorderRadius.circular(15.0),
                     borderSide: const BorderSide(
                       color: Colors.black,
                       width: 1.0,
