@@ -86,9 +86,7 @@ class _SearchSectionStatement extends State<SearchSection>{
     textFieldController.clear();
     textFieldText = textFieldController.text;
     var settings = context.read<ProviderSearch>();
-    settings.updateKeyWord(textFieldText);
-    //Recherche des éléments en rapport avec le mot clé
-
+    settings.updateList(textFieldText);
   }
 
 }

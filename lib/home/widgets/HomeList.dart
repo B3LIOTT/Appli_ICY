@@ -29,16 +29,11 @@ class _HomeListStatement extends State<HomeList>{
                     width: 1
                 ),
               ),
-              child: ListView(
-                padding: const EdgeInsets.all(10),
-                children: [
-                  CoursWidget(l_cw[0].s),
-                  CoursWidget(l_cw[0].s),
-                  CoursWidget(l_cw[0].s),
-                  CoursWidget(l_cw[0].s),
-                ],
+              child: ListView.builder(
+                itemCount: settings.ListCoursWidget.length,
+                itemBuilder: (context, index) => settings.ListCoursWidget[index]
+                ),
               ),
-            ),
           );
         }
     );

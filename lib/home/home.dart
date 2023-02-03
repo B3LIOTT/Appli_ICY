@@ -3,6 +3,8 @@ import 'package:app_icy/home/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Objects/ProviderSearch.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -16,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => SearchSection())
+        ChangeNotifierProvider(create: (context) => ProviderSearch())
       ],
       child: Scaffold(
         backgroundColor: const Color(0xFF5198C3),
