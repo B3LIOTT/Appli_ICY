@@ -1,6 +1,7 @@
 import 'package:app_icy/home/widgets/HomeList.dart';
 import 'package:app_icy/home/widgets/search.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,22 +11,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF5198C3),
-      body:Column(
-            children: [
-              Image.asset(
-                  'assets/images/TOP_DESIGN_ICY_APP.png'
-              ),
-              const SearchSection(),
-              const Expanded(
-                  child: HomeList(),
-              ),
-            ],
-          ),
-      bottomNavigationBar: NavigationBar(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => SearchSection())
+      ],
+      child: Scaffold(
+        backgroundColor: const Color(0xFF5198C3),
+        body:Column(
+              children: [
+                Image.asset(
+                    'assets/images/TOP_DESIGN_ICY_APP.png'
+                ),
+                const SearchSection(),
+                const Expanded(
+                    child: HomeList(),
+                ),
+              ],
+            ),
+        bottomNavigationBar: NavigationBar(),
+      )
     );
   }
 
@@ -68,9 +75,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-
-
-
-
   }
 }

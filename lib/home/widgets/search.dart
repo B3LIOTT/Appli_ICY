@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../Objects/ProviderSearch.dart';
 
 class SearchSection extends StatefulWidget {
   const SearchSection({super.key});
@@ -82,6 +85,8 @@ class _SearchSectionStatement extends State<SearchSection>{
   void searchAction() {
     textFieldController.clear();
     textFieldText = textFieldController.text;
+    var settings = context.read<ProviderSearch>();
+    settings.updateKeyWord(textFieldText);
     //Recherche des éléments en rapport avec le mot clé
 
   }
