@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
-class CoursWidget extends StatelessWidget {
-  String matiere = "";
-  int periode = 0;
+import '../../Objects/Sections.dart';
 
-  CoursWidget(String matiere, int periode, {super.key}){
-    this.matiere = matiere;
-    this.periode = periode;
+class CoursWidget extends StatelessWidget {
+  Section _s;
+
+  CoursWidget(this._s, {super.key});
+
+  Section get s {
+    return _s;
   }
 
   @override
@@ -24,7 +26,7 @@ class CoursWidget extends StatelessWidget {
           children: [
             Column(
               children: [
-                Text(matiere)
+                Text(_s.Matiere)
               ],
             )
           ],
