@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../Info Pages/CoursInfo.dart';
+import '../../Info/CoursInfo.dart';
 import '../../Objects/Sections.dart';
 
 class CoursWidget extends StatelessWidget {
@@ -38,7 +37,7 @@ class CoursWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(_s.Matiere,
-                    style: const TextStyle(
+                      style: const TextStyle(
                       fontSize: 18,
                     )
                   ),
@@ -49,7 +48,7 @@ class CoursWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Image.asset(_s.ImageUrl)
+              //Image.asset(_s.ImageUrl)
             ],
           ),
         ),

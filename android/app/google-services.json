@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "958051631664",
+    "firebase_url": "https://app-icy-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "app-icy",
+    "storage_bucket": "app-icy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958051631664:android:9e5451e5c5bc00dc6623f5",
+        "android_client_info": {
+          "package_name": "com.example.app_icy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958051631664-87jen3pbipt5g57qe84reh6hc2dvp4gc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSKu0kVqXOiQf7ANkV4rlDpOfMgUCKQzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958051631664-87jen3pbipt5g57qe84reh6hc2dvp4gc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
