@@ -17,14 +17,9 @@ class ProviderSearch extends ChangeNotifier {
 
   // Fonction qui met à jour la liste des CoursWidget de l'on va afficher en rapport au mot clé recherché
   void updateList(String word) {
+    print(word);
     for(CoursWidget cw in _l_cw ){
-      if( word == cw.s.Matiere) {
-        _l_display.add(cw);
-      }
-      else if(cw.s.Module.contains(word)) {
-        _l_display.add(cw);
-      }
-      else if(cw.s.Periode == int.parse(word)) {
+      if(cw.s.Matiere.contains(word) || cw.s.Module.contains(word)) {
         _l_display.add(cw);
       }
     }

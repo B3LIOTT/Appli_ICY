@@ -31,7 +31,8 @@ class _HomeListStatement extends State<HomeList>{
               ),
               child: ListView.builder(
                 itemCount: settings.ListCoursWidget.length,
-                itemBuilder: (context, index) => settings.ListCoursWidget[index]
+                itemBuilder: (context, index) => settings.ListCoursWidget[index],
+                padding: const EdgeInsets.all(10),
                 ),
               ),
           );

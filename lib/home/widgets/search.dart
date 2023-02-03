@@ -83,10 +83,10 @@ class _SearchSectionStatement extends State<SearchSection>{
   }
 
   void searchAction() {
-    textFieldController.clear();
     textFieldText = textFieldController.text;
     var settings = context.read<ProviderSearch>();
     settings.updateList(textFieldText);
+    textFieldController.clear();
   }
 
 }
