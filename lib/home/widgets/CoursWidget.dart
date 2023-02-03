@@ -15,9 +15,10 @@ class CoursWidget extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Container(
         height: 100,
+        padding: const EdgeInsets.all(20),
         decoration: const BoxDecoration(
           color: Color(0xFFEFEDEF),
-          borderRadius: BorderRadius.all(Radius.circular(15))
+          borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
         child: Row(
           children: [

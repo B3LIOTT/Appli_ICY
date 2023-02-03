@@ -16,7 +16,7 @@ class _HomeListStatement extends State<HomeList>{
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFF00516A),
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          borderRadius: const BorderRadius.all(Radius.circular(25)),
           border: Border.all(
             color: Colors.black,
             width: 1
