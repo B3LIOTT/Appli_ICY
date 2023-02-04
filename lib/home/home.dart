@@ -28,9 +28,7 @@ class _HomePageState extends State<HomePage> {
                     'assets/images/TOP_DESIGN_ICY_APP.png'
                 ),
                 const SearchSection(),
-                const Expanded(
-                    child: HomeList(),
-                ),
+                const Expanded(child: HomeList())
               ],
             ),
         bottomNavigationBar: NavigationBar(),

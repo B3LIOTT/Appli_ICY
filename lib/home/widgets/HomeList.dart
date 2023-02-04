@@ -30,17 +30,11 @@ class _HomeListStatement extends State<HomeList>{
                     width: 1
                 ),
               ),
-              child: FutureBuilder(
-                future: ,
-                builder: (context, index) {
-                  return ListView.builder(
+              child: ListView.builder(
                     itemCount: settings.ListCoursWidget.length,
-                    itemBuilder: (context, index) =>
-                    settings.ListCoursWidget[index],
+                    itemBuilder: (context, index) => settings.ListCoursWidget[index],
                     padding: const EdgeInsets.all(10),
-                  );
-                }
-              )
+                  )
             ),
           );
         }
