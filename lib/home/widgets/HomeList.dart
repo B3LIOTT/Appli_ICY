@@ -1,9 +1,10 @@
-import 'package:app_icy/Objects/CoursRepo.dart';
 import 'package:app_icy/Objects/ProviderSearch.dart';
-import 'package:app_icy/Objects/Sections.dart';
-import 'package:app_icy/home/widgets/CoursWidget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../Objects/Sections.dart';
+import 'CoursWidget.dart';
 
 class HomeList extends StatefulWidget {
   const HomeList({super.key});

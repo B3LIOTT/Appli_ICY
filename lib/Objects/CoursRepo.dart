@@ -1,17 +1,22 @@
-
 import 'package:app_icy/Objects/Sections.dart';
 import 'package:app_icy/home/widgets/CoursWidget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CoursRepo {
-
+  FirebaseFirestore db = FirebaseFirestore.instance;
   List<CoursWidget> widget_list = <CoursWidget>[];
 
   CoursRepo(){
-    widget_list.add(CoursWidget(Section(1, "Periode 2", "Dev Web", "assets/images/image.png")));
-    widget_list.add(CoursWidget(Section(1, "Periode 2", "Proba Stats", "assets/images/image.png")));
-    for(int i = 0; i < 8; i++){
-      widget_list.add(CoursWidget(Section(i%4 + 1, "Module", "Matiere", "assets/images/image.png")));
-    }
+    initDB();
+  }
+
+  Future<void> initDB()  async {
+    db.collection('Sections').get().then((snapshot) =>
+        snapshot.docs.forEach((element) {
+          var dataList = element.data().values.toList();
+          widget_list.add(CoursWidget(Section(dataList[3], dataList[1], dataList[2], dataList[0])));
+          })
+    );
   }
 
   List<CoursWidget> get ListCoursWidget {
