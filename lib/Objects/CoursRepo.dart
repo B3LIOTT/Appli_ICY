@@ -8,7 +8,8 @@ class CoursRepo {
 
   CoursRepo(){
     widget_list.add(CoursWidget(Section(1, "Periode 2", "Dev Web", "assets/images/image.png")));
-    for(int i = 0; i < 10; i++){
+    widget_list.add(CoursWidget(Section(1, "Periode 2", "Proba Stats", "assets/images/image.png")));
+    for(int i = 0; i < 8; i++){
       widget_list.add(CoursWidget(Section(i%4 + 1, "Module", "Matiere", "assets/images/image.png")));
     }
   }
