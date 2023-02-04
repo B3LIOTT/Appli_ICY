@@ -38,12 +38,12 @@ class CoursWidget extends StatelessWidget {
                 children: [
                   Text(_s.Matiere,
                       style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 22,
                     )
                   ),
                   Text(_s.Module,
                       style: const TextStyle(
-                        fontSize: 14,
+                        fontSize: 18,
                       )
                   ),
                 ],
