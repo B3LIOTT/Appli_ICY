@@ -35,17 +35,18 @@ class CoursWidget extends StatelessWidget {
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(_s.Matiere,
                       style: const TextStyle(
-                      fontSize: 22,
+                      fontSize: 18,
                     )
                   ),
                   Text(_s.Module,
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 14,
                       )
-                  ),
+                  )
                 ],
               ),
               //Image.asset(_s.ImageUrl)
