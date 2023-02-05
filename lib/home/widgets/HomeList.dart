@@ -1,10 +1,8 @@
 import 'package:app_icy/Objects/ProviderSearch.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:app_icy/home/widgets/CoursWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../Objects/Sections.dart';
-import 'CoursWidget.dart';
 
 class HomeList extends StatefulWidget {
   const HomeList({super.key});
@@ -14,31 +12,46 @@ class HomeList extends StatefulWidget {
 }
 
 class _HomeListStatement extends State<HomeList>{
+  List<CoursWidget> _l_display = <CoursWidget>[];
+
+
+  List<CoursWidget> displayList(List<CoursWidget> l_cw, String word) {
+    _l_display = <CoursWidget>[];
+
+    for (CoursWidget cw in l_cw) {
+      if (cw.s.Matiere.toLowerCase().contains(word.toLowerCase()) ||
+          cw.s.Module.toLowerCase().contains(word.toLowerCase())) {
+        _l_display.add(cw);
+      }
+    }
+    return _l_display;
+  }
 
   @override
   Widget build(BuildContext context) {
+    final _cours = Provider.of<List<CoursWidget>>(context);
     return Consumer<ProviderSearch>(
         builder: (context, settings, child) {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFF00516A),
-                borderRadius: const BorderRadius.all(Radius.circular(25)),
-                border: Border.all(
-                    color: Colors.black,
-                    width: 1
+                decoration: BoxDecoration(
+                  color: const Color(0xFF00516A),
+                  borderRadius: const BorderRadius.all(Radius.circular(25)),
+                  border: Border.all(
+                      color: Colors.black,
+                      width: 1
+                  ),
                 ),
-              ),
-              child: ListView.builder(
-                    itemCount: settings.ListCoursWidget.length,
-                    itemBuilder: (context, index) => settings.ListCoursWidget[index],
-                    padding: const EdgeInsets.all(10),
-                  )
+                child: ListView.builder(
+                  itemCount: displayList(_cours, settings.keyWord).length,
+                  itemBuilder: (context, index) => _l_display[index],
+                  padding: const EdgeInsets.all(10),
+                )
             ),
           );
-        }
-    );
-  }
+        },
+      );
+    }
 
 }

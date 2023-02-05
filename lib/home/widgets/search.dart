@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../Objects/ProviderSearch.dart';
-import '../../Objects/Sections.dart';
-import 'CoursWidget.dart';
 
 class SearchSection extends StatefulWidget {
   const SearchSection({super.key});
@@ -17,42 +14,10 @@ class _SearchSectionStatement extends State<SearchSection>{
   final TextEditingController textFieldController = TextEditingController();
   String textFieldText = "";
 
-  List<CoursWidget> _l_cw = <CoursWidget>[];
-  List<CoursWidget> _l_display = <CoursWidget>[];
-  FirebaseFirestore db = FirebaseFirestore.instance;
-
-  @override
-  initState() {
-    initDB();
-    super.initState();
-  }
-
-  // Fonction qui initialise la liste de départ
-  Future<void> initDB()  async {
-    db.collection('Sections').get().then((snapshot) =>
-        snapshot.docs.forEach((element) {
-          var dataList = element.data().values.toList();
-          _l_cw.add(CoursWidget(Section(dataList[3], dataList[1], dataList[2], dataList[0])));
-        })
-    );
-    _l_display = _l_cw;
-  }
-
   // Fonction qui actualise la liste des CoursWidget de l'on va afficher en rapport au mot clé recherché
   void searchAction() {
-    textFieldText = textFieldController.text;
-    _l_display = <CoursWidget>[];
-    for (CoursWidget cw in _l_cw) {
-      if (cw.s.Matiere.toLowerCase().contains(textFieldText.toLowerCase()) ||
-          cw.s.Module.toLowerCase().contains(textFieldText.toLowerCase())) {
-        _l_display.add(cw);
-      }
-    }if(_l_display.isEmpty){
-      // Message d'erreur
-    }
-    
     var settings = context.read<ProviderSearch>();
-    settings.updateList(_l_display);
+    settings.updateKeyWord(textFieldController.text);
     textFieldController.clear();
   }
 

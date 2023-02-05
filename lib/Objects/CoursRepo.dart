@@ -3,23 +3,17 @@ import 'package:app_icy/home/widgets/CoursWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CoursRepo {
-  FirebaseFirestore db = FirebaseFirestore.instance;
-  List<CoursWidget> widget_list = <CoursWidget>[];
+  final CollectionReference _cours = FirebaseFirestore.instance.collection('Sections');
 
-  CoursRepo(){
-    initDB();
-  }
-
-  Future<void> initDB()  async {
-    db.collection('Sections').get().then((snapshot) =>
-        snapshot.docs.forEach((element) {
-          var dataList = element.data().values.toList();
-          widget_list.add(CoursWidget(Section(dataList[3], dataList[1], dataList[2], dataList[0])));
-          })
-    );
-  }
-
-  List<CoursWidget> get ListCoursWidget {
-    return widget_list;
+  // Recuperation des données
+  Stream<List<CoursWidget>> get ListCoursWidget {
+    return _cours.snapshots().map((snapshot){
+      return snapshot.docs.map((element){
+        return CoursWidget(Section(element.get('periode'),
+            element.get('module'),
+            element.get('matiere'),
+            element.get('imgUrl')));
+      }).toList();
+    });
   }
 }
