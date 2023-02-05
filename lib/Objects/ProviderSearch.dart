@@ -1,4 +1,3 @@
-import 'package:app_icy/home/widgets/CoursWidget.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProviderSearch extends ChangeNotifier {

@@ -15,6 +15,7 @@ class _HomeListStatement extends State<HomeList>{
   List<CoursWidget> _l_display = <CoursWidget>[];
 
 
+  // Fonction qui actualise la liste des cours à afficher
   List<CoursWidget> displayList(List<CoursWidget> l_cw, String word) {
     _l_display = <CoursWidget>[];
 

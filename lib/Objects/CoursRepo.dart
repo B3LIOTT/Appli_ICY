@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class CoursRepo {
   final CollectionReference _cours = FirebaseFirestore.instance.collection('Sections');
 
-  // Recuperation des données
+  // Getter qui recupere les données sous forme d'une stream-liste t qui la retourne
   Stream<List<CoursWidget>> get ListCoursWidget {
     return _cours.snapshots().map((snapshot){
       return snapshot.docs.map((element){

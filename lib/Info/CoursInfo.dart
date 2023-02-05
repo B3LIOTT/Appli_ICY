@@ -15,7 +15,7 @@ class CoursInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF5198C3),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xFF00516A),
         title: const Text("Fichiers de cours"),
@@ -30,15 +30,19 @@ class CoursInfo extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final file = files[index];
                   return Padding(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(15),
                     child: InkWell(
                       onTap: () {},
                       child: Container(
                         height: 80,
                         padding: const EdgeInsets.all(10),
-                        decoration: const BoxDecoration(
-                          color: Color(0xFFEFEDEF),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFEFEDEF),
+                          borderRadius: const BorderRadius.all(Radius.circular(20)),
+                          border: Border.all(
+                              color: Colors.black,
+                              width: 1
+                          ),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
