@@ -1,7 +1,8 @@
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import '../Objects/Sections.dart';
+import 'dart:io';
 
 class CoursInfo extends StatelessWidget {
   Section? _s;
@@ -11,6 +12,7 @@ class CoursInfo extends StatelessWidget {
     _s = s;
     data = FirebaseStorage.instance.ref("${_s?.Matiere}/").list();// On récupère les fichiers associés à la matière choisie
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +30,41 @@ class CoursInfo extends StatelessWidget {
               return ListView.builder(
                 itemCount: files.length,
                 itemBuilder: (context, index) {
-                  final file = files[index];
+                  final file = files[index];// = path reference to the pdf
                   return Padding(
                     padding: const EdgeInsets.all(15),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () async {
+                        try{
+                          final appDocDir = await getApplicationDocumentsDirectory();
+                          final filePath = "${appDocDir.absolute}/${file.name}";
+                          final dlFile = File(filePath);
+
+                          final downloadTask = file.writeToFile(dlFile);
+                          downloadTask.snapshotEvents.listen((taskSnapshot) {
+                            switch (taskSnapshot.state) {
+                              case TaskState.running:
+                              // TODO: Handle this case.
+                                break;
+                              case TaskState.paused:
+                              // TODO: Handle this case.
+                                break;
+                              case TaskState.success:
+                              // TODO: Handle this case.
+                                break;
+                              case TaskState.canceled:
+                              // TODO: Handle this case.
+                                break;
+                              case TaskState.error:
+                              // TODO: Handle this case.
+                                break;
+                            }
+                          });
+
+                        }on FirebaseException catch(e) {
+                          //
+                        }
+                      },
                       child: Container(
                         height: 80,
                         padding: const EdgeInsets.all(10),
