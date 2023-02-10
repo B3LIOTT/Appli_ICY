@@ -33,8 +33,12 @@ class _HomeListStatement extends State<HomeList>{
     final _cours = Provider.of<List<CoursWidget>>(context);
     return Consumer<ProviderSearch>(
         builder: (context, settings, child) {
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+          return ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 800
+            ),
+            child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
             child: Container(
                 decoration: BoxDecoration(
                   color: const Color(0xFF00516A),
@@ -49,6 +53,7 @@ class _HomeListStatement extends State<HomeList>{
                   itemBuilder: (context, index) => _l_display[index],
                   padding: const EdgeInsets.all(10),
                 )
+            ),
             ),
           );
         },

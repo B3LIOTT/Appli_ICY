@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import '../../Info/CoursInfo.dart';
 import '../../Objects/Sections.dart';
 
@@ -24,8 +25,8 @@ class CoursWidget extends StatelessWidget {
           );
         },
         child: Container(
-          height: 100,
-          padding: const EdgeInsets.all(20),
+          height: 120,
+          padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10, right: 10),
           decoration: const BoxDecoration(
             color: Color(0xFFEFEDEF),
             borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -33,8 +34,10 @@ class CoursWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              SizedBox(
+                width: 140,
+                child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(_s.Matiere,
@@ -42,14 +45,24 @@ class CoursWidget extends StatelessWidget {
                       fontSize: 18,
                     )
                   ),
-                  Text(_s.Module,
+                  Text("Periode: ${_s.Periode.toString()}",
                       style: const TextStyle(
+                        color: Colors.black45,
+                        fontSize: 14,
+                      )
+                  ),
+                  Text("Module: ${_s.Module}",
+                      style: const TextStyle(
+                        color: Colors.black45,
                         fontSize: 14,
                       )
                   )
                 ],
               ),
-              //Image.asset(_s.ImageUrl)
+              ),
+              Expanded(
+                  child: Image.network(_s.ImageUrl)
+              )
             ],
           ),
         ),
