@@ -16,10 +16,10 @@ class _HomeListStatement extends State<HomeList>{
 
 
   // Fonction qui actualise la liste des cours à afficher
-  List<CoursWidget> displayList(List<CoursWidget> l_cw, String word) {
+  List<CoursWidget> displayList(List<CoursWidget> lCw, String word) {
     _l_display = <CoursWidget>[];
 
-    for (CoursWidget cw in l_cw) {
+    for (CoursWidget cw in lCw) {
       if (cw.s.Matiere.toLowerCase().contains(word.toLowerCase()) ||
           cw.s.Module.toLowerCase().contains(word.toLowerCase())) {
         _l_display.add(cw);

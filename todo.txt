@@ -1,0 +1,6 @@
+-> verifier si le fichier demandé n'a pas déjà été téléchargé avant
+    cad si il n'est pas déjà dans l'app
+
+-> permettre de supprimer les fichiers téléchargés qui sont stockés dans l'app
+
+->
