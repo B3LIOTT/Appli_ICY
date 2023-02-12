@@ -1,5 +1,6 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import '../Objects/Sections.dart';
 import 'dart:io';
@@ -37,32 +38,26 @@ class CoursInfo extends StatelessWidget {
                       onTap: () async {
                         try{
                           final appDocDir = await getApplicationDocumentsDirectory();
-                          final filePath = "${appDocDir.absolute}/${file.name}";
+                          final filePath = "${appDocDir.path}/${file.name}";
                           final dlFile = File(filePath);
 
                           final downloadTask = file.writeToFile(dlFile);
                           downloadTask.snapshotEvents.listen((taskSnapshot) {
-                            switch (taskSnapshot.state) {
-                              case TaskState.running:
-                              // TODO: Handle this case.
-                                break;
-                              case TaskState.paused:
-                              // TODO: Handle this case.
-                                break;
-                              case TaskState.success:
-                              // TODO: Handle this case.
-                                break;
-                              case TaskState.canceled:
-                              // TODO: Handle this case.
-                                break;
-                              case TaskState.error:
-                              // TODO: Handle this case.
-                                break;
+                            if(taskSnapshot.state == TaskState.error || taskSnapshot.state == TaskState.success) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(
+                                      "Status: ${taskSnapshot.state}"))
+                              );
                             }
                           });
 
+                          await dlFile.create();
+                          await OpenFile.open(dlFile.path);
+
                         }on FirebaseException catch(e) {
-                          //
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Erreur de téléchargement: $e"))
+                          );
                         }
                       },
                       child: Container(
