@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
         ChangeNotifierProvider(create: (context) => ProviderSearch()),
         StreamProvider<List<CoursWidget>>.value(
             value: CoursRepo().ListCoursWidget,
-            initialData: []
+            initialData: const []
         )
       ],
       child: Scaffold(

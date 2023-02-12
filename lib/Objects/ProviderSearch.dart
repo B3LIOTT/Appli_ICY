@@ -8,7 +8,6 @@ class ProviderSearch extends ChangeNotifier {
     notifyListeners();
   }
 
-
   String get keyWord {
     return _word;
   }

@@ -48,20 +48,24 @@ class CoursWidget extends StatelessWidget {
                   Text("Periode: ${_s.Periode.toString()}",
                       style: const TextStyle(
                         color: Colors.black45,
-                        fontSize: 14,
+                        fontSize: 12,
                       )
                   ),
                   Text("Module: ${_s.Module}",
                       style: const TextStyle(
                         color: Colors.black45,
-                        fontSize: 14,
+                        fontSize: 12,
                       )
                   )
                 ],
               ),
               ),
               Expanded(
-                  child: Image.network(_s.ImageUrl)
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)
+                      ),
+                    child: Image.network(_s.ImageUrl),
+                  ),
               )
             ],
           ),
