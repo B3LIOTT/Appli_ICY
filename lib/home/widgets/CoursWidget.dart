@@ -34,8 +34,7 @@ class CoursWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                width: 140,
+              Expanded(
                 child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,6 +59,7 @@ class CoursWidget extends StatelessWidget {
                 ],
               ),
               ),
+              const SizedBox(width: 10),
               Expanded(
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(10)

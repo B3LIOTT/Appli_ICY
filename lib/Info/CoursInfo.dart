@@ -43,10 +43,25 @@ class CoursInfo extends StatelessWidget {
 
                           final downloadTask = file.writeToFile(dlFile);
                           downloadTask.snapshotEvents.listen((taskSnapshot) {
-                            if(taskSnapshot.state == TaskState.error || taskSnapshot.state == TaskState.success) {
+                            if(taskSnapshot.state == TaskState.error) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(
-                                      "Status: ${taskSnapshot.state}"))
+                                  const SnackBar(content: Text(
+                                      "Erreur de téléchargement",
+                                style: TextStyle(
+                                  color: Colors.red,
+                                ),
+                                  ),
+                                  ),
+                              );
+                            }else if(taskSnapshot.state == TaskState.success) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text(
+                                      "Téléchargement terminé",
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                    ),
+                                  ),
+                                  ),
                               );
                             }
                           });
