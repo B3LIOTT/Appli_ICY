@@ -38,7 +38,7 @@ class _HomeListStatement extends State<HomeList>{
               maxWidth: 800
             ),
             child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 20),
             child: Container(
                 decoration: BoxDecoration(
                   color: const Color(0xFF00516A),
@@ -59,5 +59,4 @@ class _HomeListStatement extends State<HomeList>{
         },
       );
     }
-
 }
