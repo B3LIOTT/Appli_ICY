@@ -3,6 +3,8 @@ import 'package:app_icy/home/widgets/CoursWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Objects/Sections.dart';
+
 
 class HomeList extends StatefulWidget {
   const HomeList({super.key});
@@ -19,13 +21,21 @@ class _HomeListStatement extends State<HomeList>{
   List<CoursWidget> displayList(List<CoursWidget> lCw, String word) {
     _l_display = <CoursWidget>[];
 
-    for (CoursWidget cw in lCw) {
-      if (cw.s.Matiere.toLowerCase().contains(word.toLowerCase()) ||
-          cw.s.Module.toLowerCase().contains(word.toLowerCase())) {
-        _l_display.add(cw);
-      }
+    if(word == "Loutre"){
+      List<CoursWidget> easteregg = <CoursWidget>[];
+      easteregg.add(CoursWidget(Section(0, "LOUTRE", "Loutre","https://cdn.discordapp.com/attachments/1043102872587477013/1072520825955176508/DALLE_2023-02-07_15.13.32_-_An_oil_painting_of_an_otter_king_in_the_1650s._Regalia._Sceptre._Crown.png")));
+      _l_display = easteregg;
+      return _l_display;
     }
-    return _l_display;
+    else {
+      for (CoursWidget cw in lCw) {
+        if (cw.s.Matiere.toLowerCase().contains(word.toLowerCase()) ||
+            cw.s.Module.toLowerCase().contains(word.toLowerCase())) {
+          _l_display.add(cw);
+        }
+      }
+      return _l_display;
+    }
   }
 
   @override

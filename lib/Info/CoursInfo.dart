@@ -68,6 +68,7 @@ class CoursInfo extends StatelessWidget {
 
                           await dlFile.create();
                           await OpenFile.open(dlFile.path);
+                          await dlFile.delete();
 
                         }on FirebaseException catch(e) {
                           ScaffoldMessenger.of(context).showSnackBar(
