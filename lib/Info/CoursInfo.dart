@@ -30,7 +30,7 @@ class CoursInfo extends StatelessWidget {
                   builder: (context, snapshot) {
                     if(snapshot.hasData) {
                       final files = snapshot.data!.items;
-                      return ListView.builder(
+                      return files.isNotEmpty? ListView.builder(
                         itemCount: files.length,
                         itemBuilder: (context, index) {
                           final file = files[index];// = path reference to the pdf
@@ -107,6 +107,16 @@ class CoursInfo extends StatelessWidget {
                             ),
                           );
                         },
+                      )
+                      : const Center(
+                          child: Text(
+                            "Aucun fichier de cours disponible",
+                            style: TextStyle(
+                              color: Color(0xFFEFEDEF),
+                              fontSize: 32
+                            ),
+                            textAlign: TextAlign.center,
+                        ),
                       );
 
                     }else if (snapshot.hasError) {
