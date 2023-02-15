@@ -19,104 +19,107 @@ class CoursInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF00516A),
-        title: const Text("Fichiers de cours"),
-      ),
-        body: FutureBuilder<ListResult>(
-          future: data,
-          builder: (context, snapshot) {
-            if(snapshot.hasData) {
-              final files = snapshot.data!.items;
-              return ListView.builder(
-                itemCount: files.length,
-                itemBuilder: (context, index) {
-                  final file = files[index];// = path reference to the pdf
-                  return Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: InkWell(
-                      onTap: () async {
-                        try{
-                          final appDocDir = await getApplicationDocumentsDirectory();
-                          final filePath = "${appDocDir.path}/${file.name}";
-                          final dlFile = File(filePath);
+        body: Column(
+          children: [
+            Image.asset(
+                'assets/images/APP_ICY_DESIGN_FILES.png'
+            ),
+            Expanded(
+                child: FutureBuilder<ListResult>(
+                  future: data,
+                  builder: (context, snapshot) {
+                    if(snapshot.hasData) {
+                      final files = snapshot.data!.items;
+                      return ListView.builder(
+                        itemCount: files.length,
+                        itemBuilder: (context, index) {
+                          final file = files[index];// = path reference to the pdf
+                          return Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: InkWell(
+                              onTap: () async {
+                                try{
+                                  final appDocDir = await getApplicationDocumentsDirectory();
+                                  final filePath = "${appDocDir.path}/${file.name}";
+                                  final dlFile = File(filePath);
 
-                          final downloadTask = file.writeToFile(dlFile);
-                          downloadTask.snapshotEvents.listen((taskSnapshot) {
-                            if(taskSnapshot.state == TaskState.error) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(content: Text(
-                                      "Erreur de téléchargement",
-                                style: TextStyle(
-                                  color: Colors.red,
+                                  final downloadTask = file.writeToFile(dlFile);
+                                  downloadTask.snapshotEvents.listen((taskSnapshot) {
+                                    if(taskSnapshot.state == TaskState.error) {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                          const SnackBar(content: Text(
+                                              "Erreur de téléchargement",
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                        ),
+                                          ),
+                                          ),
+                                      );
+                                    }else if(taskSnapshot.state == TaskState.success) {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                          const SnackBar(content: Text(
+                                              "Téléchargement terminé",
+                                            style: TextStyle(
+                                              color: Colors.green,
+                                            ),
+                                          ),
+                                          ),
+                                      );
+                                    }
+                                  });
+
+                                  await dlFile.create();
+                                  await OpenFile.open(dlFile.path);
+                                  await dlFile.delete();
+
+                                }on FirebaseException catch(e) {
+                                  //
+                                }
+                              },
+                              child: Container(
+                                height: 80,
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFEFEDEF),
+                                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                  border: Border.all(
+                                      color: Colors.black,
+                                      width: 1
+                                  ),
                                 ),
-                                  ),
-                                  ),
-                              );
-                            }else if(taskSnapshot.state == TaskState.success) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(content: Text(
-                                      "Téléchargement terminé",
-                                    style: TextStyle(
-                                      color: Colors.green,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Image.asset('assets/images/file.png'),
+                                    Expanded(
+                                        child: Padding(
+                                            padding: const EdgeInsets.all(5),
+                                            child: Text(file.name,
+                                                style: const TextStyle(
+                                                  fontSize: 20,
+                                                )
+                                            ),
+                                        ),
                                     ),
-                                  ),
-                                  ),
-                              );
-                            }
-                          });
-
-                          await dlFile.create();
-                          await OpenFile.open(dlFile.path);
-                          await dlFile.delete();
-
-                        }on FirebaseException catch(e) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("Erreur de téléchargement: $e"))
-                          );
-                        }
-                      },
-                      child: Container(
-                        height: 80,
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFEFEDEF),
-                          borderRadius: const BorderRadius.all(Radius.circular(20)),
-                          border: Border.all(
-                              color: Colors.black,
-                              width: 1
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Image.asset('assets/images/file.png'),
-                            Expanded(
-                                child: Padding(
-                                    padding: const EdgeInsets.all(5),
-                                    child: Text(file.name,
-                                        style: const TextStyle(
-                                          fontSize: 20,
-                                        )
-                                    ),
+                                  ],
                                 ),
+                              ),
                             ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              );
+                          );
+                        },
+                      );
 
-            }else if (snapshot.hasError) {
-              return const Center(child: Text("Error")
-              );
-            }else {
-              return const Center(child: CircularProgressIndicator(),);
-            }
-          }
-        ),
+                    }else if (snapshot.hasError) {
+                      return const Center(child: Text("Error")
+                      );
+                    }else {
+                      return const Center(child: CircularProgressIndicator(),);
+                    }
+                  }
+                ),
+            ),
+          ],
+      ),
     );
   }
 

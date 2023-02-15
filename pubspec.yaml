@@ -73,6 +73,7 @@ flutter:
    - assets/images/search-interface-symbol.png
    - assets/images/file.png
    - assets/images/refresh.png
+   - assets/images/APP_ICY_DESIGN_FILES.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
