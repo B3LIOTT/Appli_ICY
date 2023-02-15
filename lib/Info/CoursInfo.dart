@@ -18,7 +18,7 @@ class CoursInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFF5198C3),
         body: Column(
           children: [
             Image.asset(
@@ -36,7 +36,18 @@ class CoursInfo extends StatelessWidget {
                           final file = files[index];// = path reference to the pdf
                           return Padding(
                             padding: const EdgeInsets.all(15),
-                            child: InkWell(
+                            child: Container(
+                              height: 80,
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFEFEDEF),
+                                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                border: Border.all(
+                                    color: Colors.black,
+                                    width: 1
+                                ),
+                              ),
+                              child: InkWell(
                               onTap: () async {
                                 try{
                                   final appDocDir = await getApplicationDocumentsDirectory();
@@ -76,18 +87,7 @@ class CoursInfo extends StatelessWidget {
                                   //
                                 }
                               },
-                              child: Container(
-                                height: 80,
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFEFEDEF),
-                                  borderRadius: const BorderRadius.all(Radius.circular(20)),
-                                  border: Border.all(
-                                      color: Colors.black,
-                                      width: 1
-                                  ),
-                                ),
-                                child: Row(
+                              child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Image.asset('assets/images/file.png'),
