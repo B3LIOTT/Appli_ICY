@@ -58,12 +58,21 @@ class _HomeListStatement extends State<HomeList>{
                       width: 1
                   ),
                 ),
-                child: ListView.builder(
-                  itemCount: displayList(_cours, settings.keyWord).length,
+                child:  displayList(_cours, settings.keyWord).isNotEmpty? ListView.builder(
+                  itemCount: _l_display.length,
                   itemBuilder: (context, index) => _l_display[index],
                   padding: const EdgeInsets.all(10),
                 )
-            ),
+                    : const Center(
+                  child: Text(
+                    "Aucun résultat",
+                    style: TextStyle(
+                        color: Color(0xFFEFEDEF),
+                        fontSize: 32
+                    ),
+                  ),
+                ),
+              ),
             ),
           );
         },

@@ -18,7 +18,7 @@ class CoursInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF5198C3),
+      backgroundColor: const Color(0xFF5198C3),
         body: Column(
           children: [
             Image.asset(
@@ -113,7 +113,7 @@ class CoursInfo extends StatelessWidget {
                       return const Center(child: Text("Error")
                       );
                     }else {
-                      return const Center(child: CircularProgressIndicator(),);
+                      return const Center(child: CircularProgressIndicator());
                     }
                   }
                 ),
