@@ -1,3 +1,5 @@
+import 'package:app_icy/home/home.dart';
+import 'package:app_icy/home/widgets/HomeList.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
@@ -24,6 +26,28 @@ class CoursInfo extends StatelessWidget {
             Image.asset(
                 'assets/images/APP_ICY_DESIGN_FILES.png'
             ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (context) => const HomePage()
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  side: const BorderSide(
+                    width: 1,
+                    color: Colors.black,
+                  ),
+                  backgroundColor: const Color(0xFF00516A),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  minimumSize: const Size(60,40),
+                  maximumSize: const Size(80,50),
+                ),
+                child: const Icon(Icons.arrow_back)
+            ),
             Expanded(
                 child: FutureBuilder<ListResult>(
                   future: data,
@@ -35,7 +59,7 @@ class CoursInfo extends StatelessWidget {
                         itemBuilder: (context, index) {
                           final file = files[index];// = path reference to the pdf
                           return Padding(
-                            padding: const EdgeInsets.all(15),
+                            padding: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
                             child: Container(
                               height: 80,
                               padding: const EdgeInsets.all(10),
