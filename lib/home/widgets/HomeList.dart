@@ -58,7 +58,7 @@ class _HomeListStatement extends State<HomeList>{
                       width: 1
                   ),
                 ),
-                child:  displayList(_cours, settings.keyWord).isNotEmpty? ListView.builder(
+                child: displayList(_cours, settings.keyWord).isNotEmpty? ListView.builder(
                   itemCount: _l_display.length,
                   itemBuilder: (context, index) => _l_display[index],
                   padding: const EdgeInsets.all(10),

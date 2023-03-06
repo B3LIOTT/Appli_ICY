@@ -64,7 +64,7 @@ class CoursWidget extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(10)
                       ),
-                    child: Image.network(_s.ImageUrl),
+                    child: Image.network(_s.ImageUrl, fit: BoxFit.cover,),
                   ),
               )
             ],

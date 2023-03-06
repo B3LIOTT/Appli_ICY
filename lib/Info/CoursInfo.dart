@@ -28,7 +28,7 @@ class CoursInfo extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
+                  Navigator.of(context).pop(
                     MaterialPageRoute(
                         builder: (context) => const HomePage()
                     ),
